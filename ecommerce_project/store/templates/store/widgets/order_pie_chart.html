@@ -1,0 +1,24 @@
+{% load static %}
+<canvas id="pieChart"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const labels = {{ children.0.labels|safe }};
+    const data = {{ children.0.data|safe }};
+
+    new Chart(document.getElementById("pieChart"), {
+        type: 'pie',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Total Order Price',
+                data: data,
+                backgroundColor: ['#4CAF50', '#FF9800', '#03A9F4', '#E91E63', '#9C27B0'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+        }
+    });
+</script>

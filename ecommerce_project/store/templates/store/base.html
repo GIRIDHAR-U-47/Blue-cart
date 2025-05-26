@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><title>E-Commerce</title></head>
+<body>
+<nav>
+    {% if user.is_authenticated %}
+        <a href="{% url 'product_list' %}">Home</a> |
+        <a href="{% url 'view_cart' %}">Cart</a> |
+        <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'signup' %}">Sign Up</a>
+
+    {% endif %}
+</nav>
+<hr>
+{% if messages %}
+    {% for message in messages %}
+        <p style="color: green;">{{ message }}</p>
+    {% endfor %}
+{% endif %}
+{% block content %}{% endblock %}
+</body>
+</html>
